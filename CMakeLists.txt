@@ -28,18 +28,22 @@ file(GLOB Headers
 file(GLOB Sources
     ${SOURCE_FOLDER}/*.c
 )
-
 add_library(${PROJNAME} STATIC ${Sources} ${Headers})
 
 # Add test libraries
-file(GLOB Sources "${TEST_FOLDER}/*.cc")
+file(GLOB test_sources "${TEST_FOLDER}/*.cc")
 
-add_executable(${TestName} ${Sources})
+add_executable(${TestName} ${test_sources})
 
 target_link_libraries(${TestName} PUBLIC
     gtest_main
-    TryGoogleTest
+    ${PROJNAME}
 )
+target_include_directories(
+    ${TestName} 
+    PRIVATE ${SOURCE_FOLDER}
+)
+
 add_test(
     NAME ${TestName}
     COMMAND ${TestName}

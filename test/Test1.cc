@@ -1,8 +1,5 @@
 #include <gtest/gtest.h>
-
-extern "C" {
-    #include "..\src\Example.h"
-}
+#include <Example.h>
 
 TEST(ExampleTests, DemonstrateGTestMacro) {
     EXPECT_EQ(true, true);
