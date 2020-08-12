@@ -22,18 +22,18 @@ add_subdirectory(googletest)
 
 
 # Add source libraries
-file(GLOB Headers
+file(GLOB_RECURSE SOURCE_HEADERS
     ${SOURCE_FOLDER}/*.h
 )
-file(GLOB Sources
+file(GLOB_RECURSE SOURCE_SOURCES
     ${SOURCE_FOLDER}/*.c
 )
-add_library(${PROJNAME} STATIC ${Sources} ${Headers})
+add_library(${PROJNAME} STATIC ${SOURCE_SOURCES} ${SOURCE_HEADERS})
 
 # Add test libraries
-file(GLOB test_sources "${TEST_FOLDER}/*.cc")
+file(GLOB TEST_SOURCE_SOURCES "${TEST_FOLDER}/*.cc")
 
-add_executable(${TestName} ${test_sources})
+add_executable(${TestName} ${TEST_SOURCE_SOURCES})
 
 target_link_libraries(${TestName} PUBLIC
     gtest_main
