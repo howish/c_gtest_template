@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 # Test directory setting
-set(TestName Project_Test)
+set(TestName Tests)
 set(SOURCE_FOLDER 
     src
 )
